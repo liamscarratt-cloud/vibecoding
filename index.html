@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ideal Gas + Boltzmann Simulator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel controls">
+        <h1>Ideal Gas Law Simulator</h1>
+        <p>
+          Explore how changing <strong>moles (n)</strong>,
+          <strong>volume (V)</strong>, and <strong>temperature (T)</strong>
+          affects pressure, particle speed, and the Maxwell-Boltzmann speed
+          distribution.
+        </p>
+
+        <div class="control">
+          <label for="nSlider">Moles, n (mol): <span id="nValue"></span></label>
+          <input id="nSlider" type="range" min="0.1" max="3" step="0.1" value="1" />
+        </div>
+
+        <div class="control">
+          <label for="vSlider">Volume, V (L): <span id="vValue"></span></label>
+          <input id="vSlider" type="range" min="2" max="30" step="0.5" value="10" />
+        </div>
+
+        <div class="control">
+          <label for="tSlider">Temperature, T (K): <span id="tValue"></span></label>
+          <input id="tSlider" type="range" min="100" max="1200" step="10" value="300" />
+        </div>
+
+        <div class="control">
+          <label for="gasSelect">Gas species</label>
+          <select id="gasSelect">
+            <option value="He">Helium (He)</option>
+            <option value="N2" selected>Nitrogen (N₂)</option>
+            <option value="O2">Oxygen (O₂)</option>
+            <option value="CO2">Carbon Dioxide (CO₂)</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="panel output">
+        <h2>Calculated Results</h2>
+        <ul class="results">
+          <li>Pressure (P): <strong id="pressureValue"></strong></li>
+          <li>Mean Speed (v̄): <strong id="meanSpeedValue"></strong></li>
+          <li>Most Probable Speed (vₚ): <strong id="vpValue"></strong></li>
+          <li>RMS Speed (vᵣₘₛ): <strong id="vrmsValue"></strong></li>
+        </ul>
+
+        <h3>Gas particle motion (qualitative)</h3>
+        <canvas id="particleCanvas" width="480" height="220" aria-label="Particle motion"></canvas>
+
+        <h3>Maxwell-Boltzmann speed distribution</h3>
+        <canvas id="distributionCanvas" width="480" height="260" aria-label="Speed distribution"></canvas>
+      </section>
+    </main>
+
+    <footer>
+      Model assumptions: ideal gas behavior, no intermolecular forces, and
+      elastic collisions.
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
